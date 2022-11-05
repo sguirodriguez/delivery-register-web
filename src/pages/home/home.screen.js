@@ -2,9 +2,10 @@ import React from "react";
 import ButtonComponent from "../../components/button";
 import Input from "../../components/input";
 import Layout from "../../components/layout";
-import { Title } from "../../styles/globalStyles";
-import { Container, Text } from "./home.styles";
+import { TextDefault, Title } from "../../styles/globalStyles";
+import { Container, InputAutoComplete, Text } from "./home.styles";
 import DateTimePicker from "react-datetime-picker";
+import { Autocomplete } from "@react-google-maps/api";
 
 const HomeScreen = ({ handlers }) => {
   const {
@@ -12,10 +13,8 @@ const HomeScreen = ({ handlers }) => {
     setName,
     product,
     setProduct,
-    startPoint,
-    setStartPoint,
-    destinationPoint,
-    setDestinationPoint,
+    originRef,
+    destinationRef,
     handleSubmit,
     value,
     onChange,
@@ -40,17 +39,16 @@ const HomeScreen = ({ handlers }) => {
           label="Produto"
         />
 
-        <Input
-          value={startPoint}
-          onChange={(event) => setStartPoint(event.target.value)}
-          label="Ponto de Partida"
-        />
+        <TextDefault style={{ marginTop: 15 }}>Ponto de Partida</TextDefault>
 
-        <Input
-          value={destinationPoint}
-          onChange={(event) => setDestinationPoint(event.target.value)}
-          label="Ponto de Destino"
-        />
+        <Autocomplete>
+          <InputAutoComplete type="text" ref={originRef} />
+        </Autocomplete>
+
+        <TextDefault style={{ marginTop: 15 }}>Ponto de Destino</TextDefault>
+        <Autocomplete>
+          <InputAutoComplete ref={destinationRef} />
+        </Autocomplete>
 
         <DateTimePicker
           onChange={onChange}

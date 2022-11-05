@@ -1,10 +1,15 @@
 import React from "react";
 import Layout from "../../components/layout";
-import { Title } from "../../styles/globalStyles";
+import { TextDefault, Title } from "../../styles/globalStyles";
 import { Container, Direction, GoBack } from "./routeMap.syles";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-const RouteMapScreen = () => {
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
+import { useGoogleContext } from "../../context/google";
+const RouteMapScreen = ({ handlers }) => {
+  const { center, setMap, directionsResponse, distance, duration } = handlers;
+  const isLoaded = useGoogleContext();
+
   return (
     <Layout
       title="Mapa"
@@ -18,7 +23,34 @@ const RouteMapScreen = () => {
           </GoBack>
         </Link>
 
-        <Container></Container>
+        <Container>
+          {!isLoaded ? (
+            <></>
+          ) : (
+            <GoogleMap
+              center={center}
+              zoom={10}
+              mapContainerStyle={{ width: "100%", height: 540 }}
+              options={{
+                zoomControl: false,
+                streetViewControl: false,
+                mapTypeControl: false,
+                fullscreenControl: false,
+              }}
+              onLoad={(map) => setMap(map)}
+            >
+              <Marker position={center} />
+              {directionsResponse && (
+                <DirectionsRenderer directions={directionsResponse} />
+              )}
+            </GoogleMap>
+          )}
+          <TextDefault style={{ marginTop: 20 }}>
+            Distância: {distance}
+          </TextDefault>
+          <br />
+          <TextDefault>Duração: {duration}</TextDefault>
+        </Container>
       </Direction>
     </Layout>
   );

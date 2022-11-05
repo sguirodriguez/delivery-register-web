@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import HomeScreen from "./home.screen";
 
 const HomeController = () => {
@@ -7,19 +7,27 @@ const HomeController = () => {
   const [startPoint, setStartPoint] = useState("");
   const [destinationPoint, setDestinationPoint] = useState("");
   const [value, onChange] = useState(new Date());
+  const originRef = useRef();
+  const destinationRef = useRef();
 
-  const handleSubmit = () => {};
-  console.log("data selecionada", value);
+  const handleSubmit = () => {
+    if (
+      originRef?.current?.value === "" &&
+      destinationRef?.current?.value === ""
+    ) {
+      return;
+    }
+  };
+
   const handlers = {
     name,
     setName,
     product,
     setProduct,
 
-    startPoint,
-    setStartPoint,
-    destinationPoint,
-    setDestinationPoint,
+    originRef,
+    destinationRef,
+
     handleSubmit,
     value,
     onChange,

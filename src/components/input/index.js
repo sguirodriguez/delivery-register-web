@@ -9,6 +9,8 @@ const Input = ({
   placeholderText,
   style,
   disabled,
+  ref,
+  type = "text",
 }) => {
   return (
     <Container>
@@ -22,6 +24,8 @@ const Input = ({
         style={style}
         placeholder={placeholderText}
         disabled={disabled}
+        ref={ref}
+        type={type}
       />
     </Container>
   );
