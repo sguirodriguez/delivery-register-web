@@ -52,6 +52,7 @@ export const Row = styled.div`
     width: 20px;
     height: 20px;
     margin-right: 12px;
+    color: ${colors.primaryColor};
   }
   &:hover {
     background-color: ${colors.gray};
