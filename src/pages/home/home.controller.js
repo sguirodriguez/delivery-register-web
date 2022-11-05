@@ -4,8 +4,6 @@ import HomeScreen from "./home.screen";
 const HomeController = () => {
   const [name, setName] = useState("");
   const [product, setProduct] = useState("");
-  const [startPoint, setStartPoint] = useState("");
-  const [destinationPoint, setDestinationPoint] = useState("");
   const [value, onChange] = useState(new Date());
   const originRef = useRef();
   const destinationRef = useRef();
@@ -24,10 +22,8 @@ const HomeController = () => {
     setName,
     product,
     setProduct,
-
     originRef,
     destinationRef,
-
     handleSubmit,
     value,
     onChange,

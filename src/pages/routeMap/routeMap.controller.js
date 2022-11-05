@@ -4,7 +4,6 @@ import { useState } from "react";
 import RouteMapScreen from "./routeMap.screen";
 
 const RouteMapController = () => {
-  const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
@@ -37,8 +36,6 @@ const RouteMapController = () => {
 
   const handlers = {
     center,
-    map,
-    setMap,
     directionsResponse,
     distance,
     duration,

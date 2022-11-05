@@ -4,10 +4,10 @@ import { TextDefault, Title } from "../../styles/globalStyles";
 import { Container, Direction, GoBack } from "./routeMap.syles";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
+import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
 import { useGoogleContext } from "../../context/google";
 const RouteMapScreen = ({ handlers }) => {
-  const { center, setMap, directionsResponse, distance, duration } = handlers;
+  const { center, directionsResponse, distance, duration } = handlers;
   const isLoaded = useGoogleContext();
 
   return (
@@ -37,9 +37,7 @@ const RouteMapScreen = ({ handlers }) => {
                 mapTypeControl: false,
                 fullscreenControl: false,
               }}
-              onLoad={(map) => setMap(map)}
             >
-              <Marker position={center} />
               {directionsResponse && (
                 <DirectionsRenderer directions={directionsResponse} />
               )}
