@@ -5,6 +5,7 @@ export const Direction = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-y: auto;
 `;
 
 export const GoBack = styled.div`
@@ -24,7 +25,7 @@ export const GoBack = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  height: 700px;
+  height: 600px;
   background-color: ${colors.white};
   box-shadow: 4px 0px 8px 0px ${colors.backgroundShadow};
   border-radius: 20px;

@@ -35,12 +35,12 @@ const Accordion = ({ data }) => {
 
       <DetailsAccordion>
         <DetailsLeft>
-          <Title>Ponto de Partida</Title>
+          <Title>Partida</Title>
           <Text>teste</Text>
         </DetailsLeft>
 
         <DetailsRight>
-          <Title>Ponto de Destino</Title>
+          <Title>Destino</Title>
           <Text>teste</Text>
         </DetailsRight>
       </DetailsAccordion>
