@@ -18,6 +18,7 @@ export const TextDefault = styled.span`
   font-family: sans-serif;
   font-size: 1rem;
   font-weight: 400;
+  text-decoration: none;
 `;
 
 export const Title = styled(TextDefault)`

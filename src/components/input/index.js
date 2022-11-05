@@ -7,32 +7,24 @@ const Input = ({
   onChange,
   label,
   placeholderText,
-  type = "default",
   style,
   disabled,
 }) => {
-  const translatorInputByType = () => {
-    const translatorInput = {
-      default: (
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          className="input"
-          label={label}
-          value={value}
-          onChange={onChange}
-          style={style}
-          placeholder={placeholderText}
-          disabled={disabled}
-        />
-      ),
-      disabled: <></>,
-    };
-
-    return translatorInput[type];
-  };
-
-  return <Container>{translatorInputByType()}</Container>;
+  return (
+    <Container>
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        className="input"
+        label={label}
+        value={value}
+        onChange={onChange}
+        style={style}
+        placeholder={placeholderText}
+        disabled={disabled}
+      />
+    </Container>
+  );
 };
 
 export default Input;

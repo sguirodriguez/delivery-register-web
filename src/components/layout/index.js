@@ -2,7 +2,7 @@ import React from "react";
 import { FaPencilAlt, FaFileAlt } from "react-icons/fa";
 import { colors, TextDefault } from "../../styles/globalStyles";
 import { Container, Content, Main, Row, SideBar } from "./styles";
-
+import { Link } from "react-router-dom";
 const Layout = ({ title = "", children, contentStyle }) => {
   return (
     <Container>
@@ -12,20 +12,25 @@ const Layout = ({ title = "", children, contentStyle }) => {
 
       <Main>
         <SideBar>
-          <Row>
-            <FaPencilAlt
-              className="icon"
-              style={{ color: colors.primaryColor }}
-            />
-            <TextDefault className="text">Cadastro</TextDefault>
-          </Row>
-          <Row>
-            <FaFileAlt
-              className="icon"
-              style={{ color: colors.primaryColor }}
-            />
-            <TextDefault className="text">Lista de entregas</TextDefault>
-          </Row>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Row>
+              <FaPencilAlt
+                className="icon"
+                style={{ color: colors.primaryColor }}
+              />
+              <TextDefault className="text">Cadastro</TextDefault>
+            </Row>
+          </Link>
+
+          <Link to="/lista-de-entregas" style={{ textDecoration: "none" }}>
+            <Row>
+              <FaFileAlt
+                className="icon"
+                style={{ color: colors.primaryColor }}
+              />
+              <TextDefault className="text">Lista de entregas</TextDefault>
+            </Row>
+          </Link>
         </SideBar>
 
         <Content style={contentStyle}>{children}</Content>
