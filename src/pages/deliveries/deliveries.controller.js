@@ -4,6 +4,8 @@ import DeliveriesScreen from "./deliveries.screen";
 
 const DeliveriesController = () => {
   const [deliveries, setDeliveries] = useState();
+  const [filterDeliveries, setFilterDeliveries] = useState();
+  const [filteredValues, setFilteredValues] = useState();
 
   const requestDeliveries = async () => {
     const { data, error } = await request({
@@ -16,11 +18,28 @@ const DeliveriesController = () => {
     setDeliveries(data);
   };
 
+  const handleSearchDeliveries = (value) => {
+    setFilterDeliveries(value);
+    const filteredDeliveries = deliveries?.filter((item, index) => {
+      if (item?.name.includes(value) || item?.product.includes(value)) {
+        return item;
+      }
+      return;
+    });
+
+    setFilteredValues(filteredDeliveries);
+  };
+
   useEffect(() => {
     requestDeliveries();
   }, []);
 
-  const handlers = { deliveries };
+  const handlers = {
+    deliveries,
+    filterDeliveries,
+    handleSearchDeliveries,
+    filteredValues,
+  };
 
   return <DeliveriesScreen handlers={handlers} />;
 };

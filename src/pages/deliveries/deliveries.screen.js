@@ -6,7 +6,12 @@ import Accordion from "../../components/accordion";
 import { Title } from "../../styles/globalStyles";
 
 const DeliveriesScreen = ({ handlers }) => {
-  const { deliveries } = handlers;
+  const {
+    deliveries,
+    filterDeliveries,
+    handleSearchDeliveries,
+    filteredValues,
+  } = handlers;
   return (
     <Layout
       title="Lista de Entregas"
@@ -14,8 +19,14 @@ const DeliveriesScreen = ({ handlers }) => {
     >
       <Container>
         <Title>Lista de Entregas</Title>
-        <Input type="default" label="Pesquisar Entrega" />
-        <Accordion data={deliveries} />
+        <Input
+          type="default"
+          label="Pesquisar Entrega"
+          value={filterDeliveries}
+          onChange={(event) => handleSearchDeliveries(event.target.value)}
+        />
+
+        <Accordion data={!filteredValues ? deliveries : filteredValues} />
       </Container>
     </Layout>
   );

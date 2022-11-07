@@ -16,6 +16,7 @@ import ButtonComponent from "../button";
 import { colors } from "../../styles/globalStyles";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { truncateText } from "../../utils/maskAndValidators";
 
 const Accordion = ({ data }) => {
   return (
@@ -29,7 +30,9 @@ const Accordion = ({ data }) => {
               id="panel1a-header"
             >
               <Summary>
-                <Title className="title-summary">{item?.name}</Title>
+                <Title className="title-summary">
+                  {truncateText(item?.name, 25)}
+                </Title>
                 <AvatarAndName>
                   <MdShoppingCart />
                   <Title>{item?.product}</Title>
@@ -40,12 +43,12 @@ const Accordion = ({ data }) => {
             <DetailsAccordion>
               <DetailsLeft>
                 <Title>Partida</Title>
-                <Text>{item?.origin}</Text>
+                <Text>{truncateText(item?.origin, 25)}</Text>
               </DetailsLeft>
 
               <DetailsRight>
                 <Title>Destino</Title>
-                <Text>{item?.destiny}</Text>
+                <Text>{truncateText(item?.destiny, 25)}</Text>
               </DetailsRight>
             </DetailsAccordion>
 
