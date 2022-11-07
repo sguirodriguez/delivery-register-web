@@ -9,7 +9,7 @@ export const RoutesComponent = () => {
       <Routes>
         <Route path="/" element={<HomeController />} />
         <Route path="/lista-de-entregas" element={<DeliveriesController />} />
-        <Route path="/mapa" element={<RouteMapController />} />
+        <Route path="/mapa/:origin/:destiny" element={<RouteMapController />} />
       </Routes>
     </Router>
   );

@@ -2,8 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import RouteMapScreen from "./routeMap.screen";
+import { useParams } from "react-router-dom";
 
 const RouteMapController = () => {
+  const params = useParams();
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
@@ -14,8 +16,8 @@ const RouteMapController = () => {
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService();
     const results = await directionsService.route({
-      origin: "Brasília, DF, Brasil",
-      destination: "São Paulo, SP, Brasil",
+      origin: params?.origin,
+      destination: params?.destiny,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     });

@@ -15,10 +15,9 @@ import { MdShoppingCart } from "react-icons/md";
 import ButtonComponent from "../button";
 import { colors } from "../../styles/globalStyles";
 import { Link } from "react-router-dom";
-import { useGoogleContext } from "../../context/google";
+import moment from "moment";
 
 const Accordion = ({ data }) => {
-  const google = useGoogleContext();
   return (
     <>
       {data?.map((item, index) => {
@@ -53,11 +52,14 @@ const Accordion = ({ data }) => {
             <DetailsAccordion>
               <DetailsLeft>
                 <Title>Data de Entrega</Title>
-                <Text>{item?.date}</Text>
+                <Text>{moment(item?.date).format("DD/MM/YYYY")}</Text>
               </DetailsLeft>
 
               <DetailsRight>
-                <Link to="/mapa" style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/mapa/${item?.origin}/${item?.destiny}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <ButtonComponent style={{ maxWidth: 200 }} onClick={() => {}}>
                     <Text style={{ color: colors.white }}>Ver Rota</Text>
                   </ButtonComponent>
