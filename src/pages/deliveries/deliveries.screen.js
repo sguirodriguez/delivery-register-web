@@ -5,7 +5,8 @@ import Input from "../../components/input";
 import Accordion from "../../components/accordion";
 import { Title } from "../../styles/globalStyles";
 
-const DeliveriesScreen = () => {
+const DeliveriesScreen = ({ handlers }) => {
+  const { deliveries } = handlers;
   return (
     <Layout
       title="Lista de Entregas"
@@ -14,7 +15,7 @@ const DeliveriesScreen = () => {
       <Container>
         <Title>Lista de Entregas</Title>
         <Input type="default" label="Pesquisar Entrega" />
-        <Accordion />
+        <Accordion data={deliveries} />
       </Container>
     </Layout>
   );

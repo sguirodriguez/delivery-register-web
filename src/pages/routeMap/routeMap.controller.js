@@ -24,12 +24,6 @@ const RouteMapController = () => {
     setDuration(results?.routes[0]?.legs[0]?.duration?.text);
   };
 
-  // function clearRoute() {
-  //   setDirectionsResponse(null);
-  //   setDistance("");
-  //   setDuration("");
-  // }
-
   useEffect(() => {
     calculateRoute();
   }, []);

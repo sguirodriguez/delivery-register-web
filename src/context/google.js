@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 const GoogleContext = createContext();
 
@@ -8,10 +8,8 @@ export function GoogleWrapper({ children }) {
     libraries: ["places"],
   });
 
-  const value = isLoaded;
-
   return (
-    <GoogleContext.Provider value={value}>
+    <GoogleContext.Provider value={isLoaded}>
       {isLoaded && children}
     </GoogleContext.Provider>
   );
